@@ -1,0 +1,23 @@
+#price-displayer {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: #2d2d2d;
+
+	text-align: center;
+	vertical-align: middle;
+	font-family: 	"HelveticaNeue-Light",
+					"Helvetica Neue Light",
+					"Helvetica Neue",
+					Helvetica, Arial,
+					"Lucida Grande",
+					sans-serif;
+	font-size: 70px;
+}
+
+#price-displayer-info {
+	font-size: 20px;
+}
+
+#control-buttons {
+	margin-top: 50px;
+}
