@@ -6,7 +6,7 @@ const ControlButtons = ({eth, usd, onCryptoChanged, onFiatChanged}) => {
 		<div id="control-buttons" className="col-md-10 col-md-offset-1">
 			<div className="col-md-3">
 				<Button
-					bsStyle="warning"
+					bsStyle="primary"
 					className="btn-lg"
 					disabled={eth}
 					onClick={event => onCryptoChanged(true)}>
@@ -16,7 +16,7 @@ const ControlButtons = ({eth, usd, onCryptoChanged, onFiatChanged}) => {
 
 			<div className="col-md-3">
 				<Button
-					bsStyle="warning"
+					bsStyle="primary"
 					className="btn-lg"
 					disabled={!eth}
 					onClick={event => onCryptoChanged(false)}>
@@ -26,7 +26,7 @@ const ControlButtons = ({eth, usd, onCryptoChanged, onFiatChanged}) => {
 
 			<div className="col-md-3">
 				<Button
-					bsStyle="warning"
+					bsStyle="primary"
 					className="btn-lg"
 					disabled={usd}
 					onClick={event => onFiatChanged(true)}>
@@ -36,11 +36,11 @@ const ControlButtons = ({eth, usd, onCryptoChanged, onFiatChanged}) => {
 
 			<div className="col-md-3">
 				<Button
-					bsStyle="warning"
+					bsStyle="primary"
 					className="btn-lg"
 					disabled={!usd}
 					onClick={event => onFiatChanged(false)}>
-				Svensk krona
+				Svensk Krona
 				</Button>
 			</div>
 		</div>
