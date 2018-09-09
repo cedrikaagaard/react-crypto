@@ -12,7 +12,6 @@ class App extends Component {
 		this.state = {
 			price: 0,
 			change: 0,
-			sekPrice: 0,
 			eth: true,
 			usd: true
 		};
@@ -65,30 +64,20 @@ class App extends Component {
 
 		Promise.all(promises).then(result => {
 			let newState = Object.assign({}, this.state);
+			let fiatMultiplier = 1;
+			let cryptoData;
 
-			if (this.state.usd) {
-				if (this.state.eth) {
-					newState.price = result[1].eth.price;
-					newState.change = result[1].eth.change;
-				}
+			if (!this.state.usd)
+				fiatMultiplier = result[0];
 
-				else {
-					newState.price = result[1].btc.price;
-					newState.change = result[1].btc.change;
-				}
-			}
+			if (this.state.eth)
+				cryptoData = result[1].eth;
 
-			else {
-				if (this.state.eth) {
-					newState.price = result[1].eth.price * result[0];
-					newState.change = result[1].eth.change;
-				}
+			else
+				cryptoData = result[1].btc;
 
-				else {
-					newState.price = result[1].btc.price * result[0];
-					newState.change = result[1].btc.change;
-				}
-			}
+			newState.price = cryptoData.price * fiatMultiplier;
+			newState.change = cryptoData.change;
 
 			this.setState(newState);
 		});
@@ -110,7 +99,6 @@ class App extends Component {
 		this.fetch();
 	}
 
-
 	render() {
 		return (
 			<div>
@@ -120,7 +108,6 @@ class App extends Component {
 					change={this.state.change}>
 				</PriceDisplayer>
 
-
 		<ControlButtons
 					eth={this.state.eth}
 					usd={this.state.usd}
@@ -128,7 +115,7 @@ class App extends Component {
 					onFiatChanged={usd => this.onFiatChanged(usd)}>
 				</ControlButtons>
 			</div>
-		)
+		);
 	}
 }
 
